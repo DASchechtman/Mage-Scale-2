@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnkt2gifhcqwr"]
+
+[sub_resource type="Gradient" id="Gradient_hp346"]
+offsets = PackedFloat32Array(0, 0.00645161, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fai6f"]
+gradient = SubResource("Gradient_hp346")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[node name="water" type="Sprite2D"]
+position = Vector2(877, 213)
+texture = SubResource("GradientTexture2D_fai6f")
