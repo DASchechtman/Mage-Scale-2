@@ -1,50 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://b82adxk3x2v5d"]
+[gd_scene load_steps=5 format=3 uid="uid://b82adxk3x2v5d"]
 
-[ext_resource type="Script" path="res://Scripts/Node2D.gd" id="1_1kxvn"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_2fy1k"]
 [ext_resource type="Texture2D" uid="uid://xf1pdwawtcbs" path="res://Assets/Images/icon.svg" id="2_bcy4n"]
-[ext_resource type="Script" path="res://Scripts/Icon.gd" id="3_7jnyp"]
 
-[sub_resource type="Gradient" id="Gradient_hp346"]
-offsets = PackedFloat32Array(0, 0.00645161, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1)
+[sub_resource type="Gradient" id="Gradient_gegks"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fai6f"]
-gradient = SubResource("Gradient_hp346")
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2m2ha"]
+gradient = SubResource("Gradient_gegks")
 
-[sub_resource type="Gradient" id="Gradient_qepn0"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+[node name="Node" type="Node"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q1ehe"]
-gradient = SubResource("Gradient_qepn0")
-
-[sub_resource type="Gradient" id="Gradient_fwkpg"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_npg3r"]
-gradient = SubResource("Gradient_fwkpg")
-
-[sub_resource type="ImageTexture" id="ImageTexture_8idfd"]
-
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_1kxvn")
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2m2ha")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(558, 253)
+position = Vector2(570, 341)
 texture = ExtResource("2_bcy4n")
-script = ExtResource("3_7jnyp")
-
-[node name="water" type="Sprite2D" parent="."]
-position = Vector2(877, 213)
-texture = SubResource("GradientTexture2D_fai6f")
-
-[node name="fire" type="Sprite2D" parent="."]
-position = Vector2(874, 103)
-texture = SubResource("GradientTexture2D_q1ehe")
-
-[node name="earth" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_npg3r")
-
-[node name="air" type="Sprite2D" parent="."]
-texture = SubResource("ImageTexture_8idfd")
+script = ExtResource("2_2fy1k")
