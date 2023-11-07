@@ -1,9 +1,13 @@
-extends Node2D
+extends Node
 
-var secs: float = 0
-var x: Callable = func (y: int) -> int:
-	return y + 1
+var __child_nodes: Array[Callable] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	for i in __child_nodes:
+		add_child(i.call())
+
+## Param -> obj: Callable() -> Node
+## Return -> void
+func AddChild(obj: Callable):
+	__child_nodes.append(obj)

@@ -9,9 +9,10 @@ var y_speed: float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	_projectile.position = Vector2.ZERO
-	get_parent().add_child(_projectile)
-	pass # Replace with function body.
+	var Func := func():
+		_projectile.position = Vector2.ZERO
+		return _projectile
+	get_parent().AddChild(Func)
 
 func _init():
 	pass
