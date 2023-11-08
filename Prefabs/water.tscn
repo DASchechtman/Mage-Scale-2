@@ -15,3 +15,4 @@ fill_to = Vector2(0, 0)
 position = Vector2(877, 213)
 texture = SubResource("GradientTexture2D_fai6f")
 script = ExtResource("1_qgw05")
+speed = 4

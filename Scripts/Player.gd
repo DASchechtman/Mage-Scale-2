@@ -7,9 +7,13 @@ var y_speed: float = 0
 @onready var _projectile_water := preload("res://Prefabs/water.tscn")
 @onready var _projectile_fire := preload("res://Prefabs/fire.tscn")
 @onready var _projectile_air := preload("res://Prefabs/air.tscn")
+@onready var _scale = get_tree().get_root().get_node("Node/Scale")
+
+var create_projectile: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(_scale)
 	pass
 
 func _input(event: InputEvent):
@@ -24,9 +28,6 @@ func _input(event: InputEvent):
 	
 	if event.is_action_pressed("ui_down") or event.is_action_released("ui_down"):
 		y_speed = ___SetSpeed("ui_down", event)
-	
-	if event.is_pressed() and event.keycode == KEY_SPACE:
-		get_parent().AddChild(__Shoot())
 
 
 
@@ -34,6 +35,8 @@ func _input(event: InputEvent):
 func _process(_delta):
 	self.position.x += x_speed
 	self.position.y += y_speed
+	if Input.is_physical_key_pressed(KEY_SPACE):
+		get_parent().AddChild(__Shoot())
 
 
 func ___SetSpeed(dir: String, event: InputEvent):
@@ -57,5 +60,7 @@ func __Shoot():
 		var projectile = projectile_inst
 		var projectile_width = projectile.get_texture().get_width() / 2.0
 		var player_width = get_texture().get_width() / 2.0
+		projectile.scale = _scale
 		projectile.position = Vector2(position.x + player_width + projectile_width, position.y)
+		projectile.InitOnLoad()
 		return projectile

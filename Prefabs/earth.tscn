@@ -12,3 +12,4 @@ gradient = SubResource("Gradient_w8qsw")
 position = Vector2(884, 442)
 texture = SubResource("GradientTexture2D_s1uu3")
 script = ExtResource("1_kqj58")
+speed = 3

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b82adxk3x2v5d"]
+[gd_scene load_steps=7 format=3 uid="uid://b82adxk3x2v5d"]
 
 [ext_resource type="Script" path="res://Scripts/Node2D.gd" id="1_1kxvn"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_2fy1k"]
 [ext_resource type="Texture2D" uid="uid://xf1pdwawtcbs" path="res://Assets/Images/icon.svg" id="2_bcy4n"]
+[ext_resource type="PackedScene" uid="uid://dgpnh3h8p43f8" path="res://Prefabs/scale.tscn" id="4_qwli3"]
 
 [sub_resource type="Gradient" id="Gradient_gegks"]
 
@@ -24,3 +25,5 @@ texture = SubResource("GradientTexture2D_2m2ha")
 position = Vector2(548, 339)
 texture = ExtResource("2_bcy4n")
 script = ExtResource("2_2fy1k")
+
+[node name="Scale" parent="." instance=ExtResource("4_qwli3")]
