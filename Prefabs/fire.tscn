@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://q14hhdgg7yra"]
+[gd_scene load_steps=4 format=3 uid="uid://q14hhdgg7yra"]
+
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_cjusm"]
 
 [sub_resource type="Gradient" id="Gradient_qepn0"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
@@ -9,3 +11,4 @@ gradient = SubResource("Gradient_qepn0")
 [node name="fire" type="Sprite2D"]
 position = Vector2(874, 103)
 texture = SubResource("GradientTexture2D_q1ehe")
+script = ExtResource("1_cjusm")

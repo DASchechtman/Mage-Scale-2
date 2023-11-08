@@ -21,6 +21,6 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_2m2ha")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(570, 341)
+position = Vector2(548, 339)
 texture = ExtResource("2_bcy4n")
 script = ExtResource("2_2fy1k")

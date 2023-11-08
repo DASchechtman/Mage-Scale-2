@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4ris6cwirnxp"]
+[gd_scene load_steps=4 format=3 uid="uid://b4ris6cwirnxp"]
+
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_2fcrx"]
 
 [sub_resource type="Gradient" id="Gradient_fwkpg"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
@@ -9,3 +11,4 @@ gradient = SubResource("Gradient_fwkpg")
 [node name="air" type="Sprite2D"]
 position = Vector2(877, 330)
 texture = SubResource("GradientTexture2D_npg3r")
+script = ExtResource("1_2fcrx")

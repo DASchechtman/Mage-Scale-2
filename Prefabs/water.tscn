@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnkt2gifhcqwr"]
+[gd_scene load_steps=4 format=3 uid="uid://bnkt2gifhcqwr"]
+
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_qgw05"]
 
 [sub_resource type="Gradient" id="Gradient_hp346"]
 offsets = PackedFloat32Array(0, 0.00645161, 1)
@@ -12,3 +14,4 @@ fill_to = Vector2(0, 0)
 [node name="water" type="Sprite2D"]
 position = Vector2(877, 213)
 texture = SubResource("GradientTexture2D_fai6f")
+script = ExtResource("1_qgw05")
