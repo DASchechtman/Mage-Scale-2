@@ -9,11 +9,14 @@ var y_speed: float = 0
 @onready var _projectile_air := preload("res://Prefabs/air.tscn")
 @onready var _scale = get_tree().get_root().get_node("Node/Scale")
 
+var timer: Timer
+
 var create_projectile: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(_scale)
+	timer = get_child(0) as Timer
 	pass
 
 func _input(event: InputEvent):
@@ -35,9 +38,12 @@ func _input(event: InputEvent):
 func _process(_delta):
 	self.position.x += x_speed
 	self.position.y += y_speed
-	if Input.is_physical_key_pressed(KEY_SPACE):
-		get_parent().AddChild(__Shoot())
+	if Input.is_physical_key_pressed(KEY_SPACE) and timer.is_stopped():
+		__Fire()
+		timer.start()
 
+func __Fire():
+	get_parent().AddChild(__Shoot())
 
 func ___SetSpeed(dir: String, event: InputEvent):
 	if event.is_action_pressed(dir):
@@ -46,9 +52,18 @@ func ___SetSpeed(dir: String, event: InputEvent):
 		return 0
 	return 0
 
-func __Shoot():
+func __CreateProjectile(projectile_inst: Projectile):
+	var projectile := projectile_inst
+	projectile.AlterScale(.5)
+	var projectile_width = projectile.GetWidth() / 2.0
+	var player_width = get_texture().get_width() / 2.0
+	projectile.InitOnLoad(_scale)
+	projectile.SetPositionByCoord(self.position.x + player_width + projectile_width, self.position.y)
+	return projectile
+
+func __Shoot() -> Callable:
 	var projectile_id = (randi() % 4) + 1
-	var projectile_inst: Node
+	var projectile_inst = null
 
 	match(projectile_id):
 		1: projectile_inst = _projectile_earth.instantiate()
@@ -56,11 +71,5 @@ func __Shoot():
 		3: projectile_inst = _projectile_fire.instantiate()
 		4: projectile_inst = _projectile_air.instantiate()
 	
-	return func():
-		var projectile = projectile_inst
-		var projectile_width = projectile.get_texture().get_width() / 2.0
-		var player_width = get_texture().get_width() / 2.0
-		projectile.scale = _scale
-		projectile.position = Vector2(position.x + player_width + projectile_width, position.y)
-		projectile.InitOnLoad()
-		return projectile
+	return func() -> Node:
+		return __CreateProjectile(projectile_inst as Projectile)
