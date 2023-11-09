@@ -33,28 +33,32 @@ func _process(delta):
 func _on_timeout():
 	queue_free()
 
-func InitOnLoad(scale: Node2D):
-	_magic_scale = scale
-	var points = 0
+func _AdjustScale() -> int:
+	var points := 0
 	for i in range(_magic_scale.get_child_count()):
 		var node := _magic_scale.get_child(i)
 		if node == null or not is_instance_of(node, TextureProgressBar):
 			continue
 		
 		if i+1 != speed and node.value > 0:
-			points += 1
 			node.value -= 1
-	_magic_scale.get_child(speed-1).value += points
+			points += 1
+	return points
 
-func AlterScale(num: float):
+
+func InitOnLoad(scale: Node2D) -> void:
+	_magic_scale = scale
+	_magic_scale.get_child(speed-1).value += _AdjustScale()
+
+func AlterScale(num: float) -> void:
 	_cur_scale = num
 	self.scale *= num
 
-func SetPosition(pos: Vector2):
+func SetPosition(pos: Vector2) -> void:
 	self.position = pos
 
-func SetPositionByCoord(x: float, y: float):
-	self.position = Vector2(x, y)
+func SetPositionByCoord(x: float, y: float) -> void:
+	self.position = Vector2(x, y)                          
 
 func GetWidth() -> float:
 	return self.texture.get_width() * _cur_scale
