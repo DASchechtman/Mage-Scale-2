@@ -2,7 +2,7 @@ extends Sprite2D
 
 var step: int = 0
 var switch: bool = true
-const RANGE := 100
+var RANGE := 100
 const INC := 400
 
 func _ready():
@@ -12,15 +12,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if step == RANGE:
-		switch = false
-	elif step == RANGE * -1:
-		switch = true
+		RANGE = -RANGE
 	
-	match switch:
-		true:
+	match RANGE:
+		100:
 			self.position.x += (INC * delta)
 			step += 1
-		false:
+		-100:
 			self.position.x -= (INC * delta)
 			step -= 1
 	
