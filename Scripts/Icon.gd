@@ -16,11 +16,12 @@ func _process(delta: float):
 	elif step == RANGE * -1:
 		switch = true
 	
-	if switch:
-		self.position.x += (INC * delta)
-		step += 1
-	else:
-		self.position.x -= (INC * delta)
-		step -= 1
+	match switch:
+		true:
+			self.position.x += (INC * delta)
+			step += 1
+		false:
+			self.position.x -= (INC * delta)
+			step -= 1
 	
 
