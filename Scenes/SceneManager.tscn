@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgi2txf3lsafr"]
+
+[ext_resource type="PackedScene" uid="uid://b82adxk3x2v5d" path="res://Scenes/overworld.tscn" id="1_60wfr"]
+[ext_resource type="Script" path="res://Scripts/sceneManager.gd" id="1_xgmaf"]
+
+[node name="sceneManager" type="Node"]
+script = ExtResource("1_xgmaf")
+
+[node name="Overworld" parent="." instance=ExtResource("1_60wfr")]

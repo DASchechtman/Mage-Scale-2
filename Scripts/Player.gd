@@ -3,6 +3,8 @@ extends CharacterBody2D
 var __CAMERA: Camera2D
 var __AREA: Area2D
 var __AUDIO: AudioStreamPlayer
+var __CUSTOM_SIGNAL = CustomSignals.GetInstance()
+var __x := 0
 
 func _ready():
 	__CAMERA = $Camera2D
@@ -11,9 +13,23 @@ func _ready():
 	__CAMERA.make_current()
 	__AREA.connect("body_entered", _on_body_entered)
 	__AUDIO.connect("finished", _loop_audio)
-	
+	__CUSTOM_SIGNAL.ConnectToChangeLevel(_test)
 
-func _process(_delta):
+func _call_signal():
+	__CUSTOM_SIGNAL.EmitChangeLevel()
+
+func _test():
+	print("test")
+
+func _stop():
+	__AUDIO.stop()
+	__CAMERA.set_current(false)
+
+func Process(_delta: float, _should_run: bool):
+	if not _should_run:
+		_stop()
+		return
+	
 	var dir = null
 	if Input.is_action_pressed("ui_up"):
 		dir = Vector2(0, -1)
@@ -27,7 +43,10 @@ func _process(_delta):
 	if dir == null:
 		return
 	
-	move_and_collide(dir)
+	if move_and_collide(dir) != null:
+		print("%s" % (__x + 1))
+		__x += 1
+		__CUSTOM_SIGNAL.EmitChangeLevelSignal()
 
 func __CheckInput(event: InputEvent, dir: String, default: float):
 	if event.is_action_pressed(dir):

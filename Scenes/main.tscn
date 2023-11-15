@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://0obyqoqvkihn"]
+
+[ext_resource type="PackedScene" uid="uid://cgi2txf3lsafr" path="res://Scenes/SceneManager.tscn" id="1_57b3d"]
+[ext_resource type="Script" path="res://Scripts/customSignals.gd" id="1_ckn2j"]
+
+[node name="main" type="Node2D"]
+
+[node name="scripts" type="Node" parent="."]
+
+[node name="signals" type="Node" parent="scripts"]
+script = ExtResource("1_ckn2j")
+
+[node name="root" parent="." instance=ExtResource("1_57b3d")]
