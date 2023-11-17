@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cju2o5okypjv5"]
+[gd_scene load_steps=5 format=3 uid="uid://cju2o5okypjv5"]
+
+[ext_resource type="Script" path="res://Scripts/Test/Test.gd" id="1_ynalg"]
+[ext_resource type="Script" path="res://Scripts/Test/MainTest.gd" id="2_dftlw"]
 
 [sub_resource type="Gradient" id="Gradient_8hefi"]
 offsets = PackedFloat32Array(1)
@@ -8,8 +11,10 @@ colors = PackedColorArray(1, 1, 1, 1)
 gradient = SubResource("Gradient_8hefi")
 
 [node name="Test" type="Node2D"]
+script = ExtResource("1_ynalg")
 
 [node name="Node" type="Node" parent="."]
+script = ExtResource("2_dftlw")
 
 [node name="TextureRect" type="TextureRect" parent="Node"]
 anchors_preset = 15
@@ -18,3 +23,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_r7kb6")
+
+[node name="Camera2D" type="Camera2D" parent="Node"]
+anchor_mode = 0
+
+[node name="Timer" type="Timer" parent="Node"]
+
+[node name="Window" type="Window" parent="Node"]

@@ -7,12 +7,12 @@ signal change_level
 static var inst = null
 
 static func GetInstance() -> CustomSignals:
-    if inst == null:
-        inst = CustomSignals.new()
-    return inst
+	if inst == null:
+		inst = CustomSignals.new()
+	return inst
 
 func EmitChangeLevelSignal() -> void:
-    change_level.emit()
+	change_level.emit()
 
 func ConnectToChangeLevel(callback: Callable) -> void:
-    change_level.connect(callback)
+	change_level.connect(callback)

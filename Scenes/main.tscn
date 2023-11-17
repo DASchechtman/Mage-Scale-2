@@ -10,4 +10,4 @@
 [node name="signals" type="Node" parent="scripts"]
 script = ExtResource("1_ckn2j")
 
-[node name="root" parent="." instance=ExtResource("1_57b3d")]
+[node name="sceneManager" parent="." instance=ExtResource("1_57b3d")]

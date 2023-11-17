@@ -1,21 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://b82adxk3x2v5d"]
+[gd_scene load_steps=11 format=3 uid="uid://b82adxk3x2v5d"]
 
-[ext_resource type="Script" path="res://Scripts/overworld.gd" id="1_cs4o7"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_2fy1k"]
+[ext_resource type="Script" path="res://Scripts/Overworld/overworld.gd" id="1_gs68a"]
 [ext_resource type="Texture2D" uid="uid://xf1pdwawtcbs" path="res://Assets/Images/icon.svg" id="2_bcy4n"]
 [ext_resource type="TileSet" uid="uid://pami05og15t8" path="res://Scenes/grass_area.tres" id="2_vn7vc"]
 [ext_resource type="TileSet" uid="uid://r62d8347xemv" path="res://Scenes/water_area.tres" id="3_fd3p6"]
 [ext_resource type="TileSet" uid="uid://b2xbf5uyyvdkx" path="res://Scenes/sky_area.tres" id="4_3ue57"]
 [ext_resource type="PackedScene" uid="uid://dgpnh3h8p43f8" path="res://Prefabs/scale.tscn" id="4_qwli3"]
+[ext_resource type="Script" path="res://Scripts/Overworld/Player.gd" id="5_bgs2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbk1q"]
-size = Vector2(167.249, 124.551)
+size = Vector2(169.862, 126.497)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nw137"]
+size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11kae"]
 size = Vector2(128, 129)
 
 [node name="Overworld" type="Node2D"]
-script = ExtResource("1_cs4o7")
+script = ExtResource("1_gs68a")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -36,7 +39,7 @@ layer_0/tile_data = PackedInt32Array(-17760298, 0, 0, -17694762, 0, 1, -17760297
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(413, -1782)
-script = ExtResource("2_2fy1k")
+script = ExtResource("5_bgs2q")
 
 [node name="Scale" parent="Player" instance=ExtResource("4_qwli3")]
 rotation = -1.5708
@@ -54,7 +57,7 @@ position = Vector2(576, 323)
 
 [node name="Area2D" type="Area2D" parent="Player"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(548, 339)
@@ -62,15 +65,13 @@ rotation = -3.14159
 scale = Vector2(0.765327, -1.02769)
 shape = SubResource("RectangleShape2D_tbk1q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(548, 339)
-rotation = -3.14159
-scale = Vector2(0.765327, -1.02769)
-shape = SubResource("RectangleShape2D_tbk1q")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(548, 339)
+shape = SubResource("RectangleShape2D_nw137")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." groups=["enemy"]]
 position = Vector2(1399, -1292)
 
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D2"]
