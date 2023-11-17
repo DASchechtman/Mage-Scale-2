@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cju2o5okypjv5"]
+[gd_scene load_steps=10 format=3 uid="uid://cju2o5okypjv5"]
 
 [ext_resource type="Script" path="res://Scripts/Test/Test.gd" id="1_ynalg"]
 [ext_resource type="Script" path="res://Scripts/Test/MainTest.gd" id="2_dftlw"]
+[ext_resource type="Script" path="res://Scripts/Test/Margin.gd" id="3_1ojur"]
+[ext_resource type="Texture2D" uid="uid://c6yjxc5vyvnnm" path="res://Assets/Artist Assets/Illustration30_png.png" id="3_hvy5n"]
+[ext_resource type="Texture2D" uid="uid://xf1pdwawtcbs" path="res://Assets/Images/icon.svg" id="4_tqlsa"]
 
 [sub_resource type="Gradient" id="Gradient_8hefi"]
 offsets = PackedFloat32Array(1)
@@ -9,6 +12,13 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r7kb6"]
 gradient = SubResource("Gradient_8hefi")
+
+[sub_resource type="Gradient" id="Gradient_b87te"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_itlpe"]
+gradient = SubResource("Gradient_b87te")
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ynalg")
@@ -29,4 +39,99 @@ anchor_mode = 0
 
 [node name="Timer" type="Timer" parent="Node"]
 
-[node name="Window" type="Window" parent="Node"]
+[node name="Characters" type="Node" parent="Node"]
+
+[node name="Illustration30Png" type="Sprite2D" parent="Node/Characters"]
+position = Vector2(835, 432)
+scale = Vector2(0.09, 0.1)
+texture = ExtResource("3_hvy5n")
+
+[node name="Icon" type="Sprite2D" parent="Node/Characters"]
+position = Vector2(138, 189)
+texture = ExtResource("4_tqlsa")
+
+[node name="Icon2" type="Sprite2D" parent="Node/Characters"]
+position = Vector2(450, 189)
+texture = ExtResource("4_tqlsa")
+
+[node name="Icon3" type="Sprite2D" parent="Node/Characters"]
+position = Vector2(782, 192)
+texture = ExtResource("4_tqlsa")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_1ojur")
+
+[node name="Control" type="Control" parent="Node/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Node/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_itlpe")
+
+[node name="Dialouge Box" type="BoxContainer" parent="Node/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Row 1" type="BoxContainer" parent="Node/MarginContainer/Control/Dialouge Box"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Node/MarginContainer/Control/Dialouge Box/Row 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Node/MarginContainer/Control/Dialouge Box/Row 1"]
+layout_mode = 2
+text = "Hello world"
+
+[node name="Control2" type="Control" parent="Node/MarginContainer/Control/Dialouge Box/Row 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Node/MarginContainer/Control/Dialouge Box/Row 1"]
+layout_mode = 2
+text = "Hello world"
+
+[node name="Control" type="Control" parent="Node/MarginContainer/Control/Dialouge Box/Row 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Row 2" type="BoxContainer" parent="Node/MarginContainer/Control/Dialouge Box"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Node/MarginContainer/Control/Dialouge Box/Row 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Node/MarginContainer/Control/Dialouge Box/Row 2"]
+layout_mode = 2
+text = "Hello world"
+
+[node name="Control2" type="Control" parent="Node/MarginContainer/Control/Dialouge Box/Row 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Node/MarginContainer/Control/Dialouge Box/Row 2"]
+layout_mode = 2
+text = "Hello world"
+
+[node name="Control" type="Control" parent="Node/MarginContainer/Control/Dialouge Box/Row 2"]
+layout_mode = 2
+size_flags_horizontal = 3
